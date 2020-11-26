@@ -1,8 +1,5 @@
 **/node_modules
-~$arning Diary.docx
-*/.vscode
 **/.env
-~WRL0005.tmp
-~WRL0722.tmp
-~WRL0003.tmp
-~WRL0005.tmp
+*/.vscode
+~$arning Diary.docx
+~WRL*.tmp
