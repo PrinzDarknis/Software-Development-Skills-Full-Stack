@@ -1,0 +1,35 @@
+### Create
+POST http://localhost/users/register
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john@mail.de",
+    "username": "john",
+    "password": "123456"
+}
+
+### Authentification
+POST http://localhost/users/authenticate
+Content-Type: application/json
+
+{
+    "username": "john",
+    "password": "123456"
+}
+
+### Authentification; Fail
+POST http://localhost/users/authenticate
+Content-Type: application/json
+
+{
+    "username": "john",
+    "password": "12345"
+}
+
+### Profile
+GET http://localhost/users/profile
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYmZmNjM0MDRhMTY1MWU0YzllODc4ZSIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NDE4MTAxLCJleHAiOjE2MDcwMjI5MDF9.x2bwGS4YtHBc_5hMd-z0IjZYu8oC2BQ64qrBHgaSGIg
+
+### Profile; Fail
+GET http://localhost/users/profile
