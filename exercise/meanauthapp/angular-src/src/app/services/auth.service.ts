@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -12,12 +12,16 @@ export class AuthService {
   authToken: any;
   user: any;
 
-  apiServer = 'http://localhost';
+  apiServer = ''; // API Server = host Server
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if (isDevMode()) {
+      this.apiServer = 'http://localhost'; // in Dev Angular uses own Port
+    }
+  }
 
   registerUser(user: User) {
     return this.http.post<APIResponse>(
