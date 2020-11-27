@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "fullstart": "cd angular-src && npm run build && cd .. && node app",
+    "fullstart": "cd angular-src && npm run build-prod && cd .. && node app",
     "start": "node app",
-    "build-frontend": "cd angular-src && npm run build",
+    "build-frontend": "cd angular-src && npm run build-prod",
     "dev": "nodemon app"
   },
   "author": "Dennis Naujokat",
