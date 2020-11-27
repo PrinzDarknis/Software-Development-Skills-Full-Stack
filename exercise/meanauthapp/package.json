@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "cd angular-src && npm run build && cd .. && node app",
+    "fullstart": "cd angular-src && npm run build && cd .. && node app",
+    "start": "node app",
     "build-frontend": "cd angular-src && npm run build",
     "dev": "nodemon app"
   },
