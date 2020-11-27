@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { from } from 'rxjs';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { from } from 'rxjs';
     AppRoutingModule,
     FlashMessagesModule.forRoot(),
   ],
-  providers: [ValidateService, AuthService],
+  providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

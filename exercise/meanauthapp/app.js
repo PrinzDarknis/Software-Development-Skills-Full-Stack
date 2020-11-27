@@ -45,9 +45,9 @@ require("./passport")(passport);
 // Routes
 app.use("/users", users);
 
-// TEMP
-app.get("/", (req, res) => {
-  res.send("Invalid Endpoint");
+// All else handeld by Frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Start Server
