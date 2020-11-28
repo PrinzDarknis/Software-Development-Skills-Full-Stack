@@ -1,0 +1,116 @@
+### Books All
+GET http://localhost/api/books
+
+### Books All; Filter: title
+GET http://localhost/api/books?title=how
+
+### Books All; Filter: author
+GET http://localhost/api/books?author=Yukiya
+
+### Books All; Filter: publischer
+GET http://localhost/api/books?publischer=Seven%20Seas%20Entertainment,%20LLC
+
+### Books All; Filter: year
+GET http://localhost/api/books?year=2020
+
+### Books All; Filter: ISBN10
+GET http://localhost/api/books?ISBN10=164505747X
+
+### Books All; Filter: category
+GET http://localhost/api/books?category=light%20novel
+
+### Books All; Filter: series
+GET http://localhost/api/books?series=how
+
+### Books All; Filter: language
+GET http://localhost/api/books?language=english
+
+### Books All; Filter: tags 1
+GET http://localhost/api/books?tags[]=isekai
+
+### Books All; Filter: tags 2
+GET http://localhost/api/books?tags[]=isekai&tags[]=mc%20transform
+
+### Books One
+GET http://localhost/api/books/5fc25a6ab45f574fdcceb445
+
+### Create Book
+POST http://localhost/api/books
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzI0NTcyYTI2YzE2MzI3YzY0ZmE1NiIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NTcyMzE2LCJleHAiOjE2MDcxNzcxMTZ9.LiG9kU89-abyW4k8A1A7AjrydvDmzaZSJrM-REYv_hQ
+Content-Type: application/json
+
+{
+    "title": "Test",
+    "author": "ich",
+    "publischer": "Miau",
+    "year": "2150",
+    "ISBN10": "1718352018",
+    "ISBN13": "9781718352018",
+    "category": "Test",
+    "series": "Test Series",
+    "language": "test",
+    "tags": ["isekai"]
+}
+
+### update Book All
+PATCH  http://localhost/api/books/5fc263b691bb424aa4f916e9
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzI0NTcyYTI2YzE2MzI3YzY0ZmE1NiIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NTcyMzE2LCJleHAiOjE2MDcxNzcxMTZ9.LiG9kU89-abyW4k8A1A7AjrydvDmzaZSJrM-REYv_hQ
+Content-Type: application/json
+
+{
+    "title": "updated title",
+    "author": "updated author",
+    "publischer": "updated publischer",
+    "year": "1010",
+    "ISBN10": "1718352018",
+    "ISBN13": "9781718352018",
+    "category": "updated category",
+    "series": "updated series",
+    "language": "updated language",
+    "tags": ["harem"]
+}
+
+### update Book Part
+PATCH  http://localhost/api/books/5fc263b691bb424aa4f916e9
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzI0NTcyYTI2YzE2MzI3YzY0ZmE1NiIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NTcyMzE2LCJleHAiOjE2MDcxNzcxMTZ9.LiG9kU89-abyW4k8A1A7AjrydvDmzaZSJrM-REYv_hQ
+Content-Type: application/json
+
+{
+    "title": "updated title",
+    "category": "updated category"
+}
+
+### Book Delete
+DELETE http://localhost/api/books/5fc263b691bb424aa4f916e9
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzI0NTcyYTI2YzE2MzI3YzY0ZmE1NiIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NTcyMzE2LCJleHAiOjE2MDcxNzcxMTZ9.LiG9kU89-abyW4k8A1A7AjrydvDmzaZSJrM-REYv_hQ
+
+
+
+
+### Create Book; no User => Fail
+POST http://localhost/api/books
+Content-Type: application/json
+
+{
+    "title": "Test",
+    "author": "ich",
+    "publischer": "Miau",
+    "year": "2150",
+    "ISBN10": "1718352018",
+    "ISBN13": "9781718352018",
+    "category": "Test",
+    "series": "Test Series",
+    "language": "test",
+    "tags": ["test"]
+}
+### update Book; no User => Fail
+PATCH  http://localhost/api/books/5fb97ad3260fc006b4d6b484
+Content-Type: application/json
+
+{
+    "title": "updated title",
+    "category": "updated category"
+}
+
+### Book Delete; no User => Fail
+DELETE http://localhost/api/books/5fb979a17e51aa31c8dec384

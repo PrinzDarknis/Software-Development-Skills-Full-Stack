@@ -1,0 +1,88 @@
+POST http://localhost/api/books
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzI0NTcyYTI2YzE2MzI3YzY0ZmE1NiIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NTcyMzE2LCJleHAiOjE2MDcxNzcxMTZ9.LiG9kU89-abyW4k8A1A7AjrydvDmzaZSJrM-REYv_hQ
+Content-Type: application/json
+
+{
+    "title": "How NOT to Summon a Demon Lord: Volume 2",
+    "author": "Yukiya Murasaki",
+    "publischer": " J-Novel Club",
+    "year": "2019",
+    "ISBN10": "1718352018",
+    "ISBN13": "9781718352018",
+    "category": "light novel",
+    "series": "How NOT to Summon a Demon Lord",
+    "language": "english",
+    "tags": ["isekai"]
+}
+
+###
+POST http://localhost/api/books
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzI0NTcyYTI2YzE2MzI3YzY0ZmE1NiIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NTcyMzE2LCJleHAiOjE2MDcxNzcxMTZ9.LiG9kU89-abyW4k8A1A7AjrydvDmzaZSJrM-REYv_hQ
+Content-Type: application/json
+
+{
+    "title": "How NOT to Summon a Demon Lord: Volume 1",
+    "author": "Yukiya Murasaki",
+    "publischer": "J-Novel Club",
+    "year": "2019",
+    "ISBN10": "171835200X",
+    "ISBN13": "9781718352001",
+    "category": "light novel",
+    "series": "How NOT to Summon a Demon Lord",
+    "language": "english",
+    "tags": ["isekai"]
+}
+
+###
+POST http://localhost/api/books
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzI0NTcyYTI2YzE2MzI3YzY0ZmE1NiIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NTcyMzE2LCJleHAiOjE2MDcxNzcxMTZ9.LiG9kU89-abyW4k8A1A7AjrydvDmzaZSJrM-REYv_hQ
+Content-Type: application/json
+
+{
+    "title": "Arifureta: From Commonplace to World's Strongest Vol. 10",
+    "author": "Ryo Shirakome",
+    "publischer": "Seven Seas Entertainment, LLC",
+    "year": "2020",
+    "ISBN10": "164505747X",
+    "ISBN13": "9781645057475",
+    "category": "light novel",
+    "series": "Arifureta: From Commonplace to World's Strongest",
+    "language": "english",
+    "tags": ["isekai"]
+}
+
+###
+POST http://localhost/api/books
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzI0NTcyYTI2YzE2MzI3YzY0ZmE1NiIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NTcyMzE2LCJleHAiOjE2MDcxNzcxMTZ9.LiG9kU89-abyW4k8A1A7AjrydvDmzaZSJrM-REYv_hQ
+Content-Type: application/json
+
+{
+    "title": "Reincarnated as a Sword Vol. 6",
+    "author": "Yuu Tanaka",
+    "publischer": "Seven Seas Entertainment, LLC",
+    "year": "2020",
+    "ISBN10": "1645057224",
+    "ISBN13": "9781645057222",
+    "category": "light novel",
+    "series": "Reincarnated as a Sword",
+    "language": "english",
+    "tags": ["isekai", "mc transform"]
+}
+
+###
+POST http://localhost/api/books
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzI0NTcyYTI2YzE2MzI3YzY0ZmE1NiIsIm5hbWUiOiJKb2huIERvZSIsInVzZXJuYW1lIjoiam9obiIsImVtYWlsIjoiam9obkBtYWlsLmRlIiwiaWF0IjoxNjA2NTcyMzE2LCJleHAiOjE2MDcxNzcxMTZ9.LiG9kU89-abyW4k8A1A7AjrydvDmzaZSJrM-REYv_hQ
+Content-Type: application/json
+
+{
+    "title": "Didn't I Say to Make My Abilities Average in the Next Life?! Vol. 10",
+    "author": "Funa",
+    "publischer": "Seven Seas Entertainment, LLC",
+    "year": "2020",
+    "ISBN10": "1645057216",
+    "ISBN13": "9781645057215",
+    "category": "light novel",
+    "series": "Didn't I Say to Make My Abilities Average in the Next Life?!",
+    "language": "english",
+    "tags": ["isekai"]
+}

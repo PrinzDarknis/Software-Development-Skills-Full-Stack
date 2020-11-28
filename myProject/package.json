@@ -1,0 +1,28 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "fullstart": "cd angular-src && npm run build-prod && cd .. && node app",
+    "start": "node app",
+    "build-frontend": "cd angular-src && npm run build-prod",
+    "dev": "nodemon app"
+  },
+  "author": "Dennis Naujokat",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.7.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.17",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.6"
+  }
+}
