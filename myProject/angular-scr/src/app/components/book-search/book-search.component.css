@@ -1,0 +1,9 @@
+.myCollapsible {
+  transition: transform 0.3s ease-out;
+  transform-origin: top;
+}
+
+.myCollpase {
+  height: 0;
+  transform: scaleY(0);
+}

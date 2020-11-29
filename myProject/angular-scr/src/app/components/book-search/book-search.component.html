@@ -1,1 +1,105 @@
-<p>book-search works!</p>
+<form (submit)="onSearchSubmit()">
+  <div class="form-group">
+    <label>Title</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="book.title"
+      name="title"
+    />
+  </div>
+  <fieldset class="form-group">
+    <legend (click)="isCollapse = !isCollapse">
+      Advanced Filters
+      <span *ngIf="isCollapse">►</span>
+      <span *ngIf="!isCollapse">▼</span>
+    </legend>
+    <div class="myCollapsible" [class.myCollpase]="isCollapse">
+      <div class="form-row">
+        <div class="col form-group">
+          <label>Author</label>
+          <input
+            type="text"
+            class="col form-control"
+            [(ngModel)]="book.author"
+            name="author"
+          />
+        </div>
+        <div class="col form-group">
+          <label>Publischer</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="book.publischer"
+            name="publischer"
+          />
+        </div>
+        <div class="col form-group">
+          <label>Year</label>
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="book.year"
+            name="year"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col form-group">
+          <label>ISBN10</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="book.ISBN10"
+            name="ISBN10"
+          />
+        </div>
+        <div class="col form-group">
+          <label>ISBN13</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="book.ISBN13"
+            name="ISBN13"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Series</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="book.series"
+          name="series"
+        />
+      </div>
+      <div class="form-row">
+        <div class="col form-group">
+          <label>Category</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="book.category"
+            name="category"
+          />
+        </div>
+        <div class="col form-group">
+          <label>Language</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="book.language"
+            name="language"
+          />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <input type="submit" class="btn btn-primary" value="Search" />
+  <input
+    type="button"
+    (click)="clearForm()"
+    class="btn btn-secondary"
+    value="Clear"
+  />
+</form>
