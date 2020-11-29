@@ -1,12 +1,35 @@
+<app-book-search></app-book-search> <br /><br /><br /><br />
 <h2 class="page-header">Books:</h2>
 <p *ngIf="!books">No Books found</p>
 <div *ngIf="books" class="row">
-  <fieldset *ngFor="let book of books" class="col-md-6">
-    <legend>{{ book.title }}</legend>
+  <fieldset *ngFor="let book of books" class="infobox col-md-6">
+    <legend>
+      <a class="deco-none" routerLink="/books/{{ book._id }}">{{
+        book.title
+      }}</a>
+    </legend>
     <ul class="list-group">
-      <li class="list-group-item">Author: {{ book.author }}</li>
-      <li class="list-group-item">Category: {{ book.category }}</li>
-      <li class="list-group-item">Language: {{ book.language }}</li>
+      <li
+        class="list-group-item"
+        routerLink="/books"
+        [queryParams]="{ author: book.author }"
+      >
+        Author: {{ book.author }}
+      </li>
+      <li
+        class="list-group-item"
+        routerLink="/books"
+        [queryParams]="{ category: book.category }"
+      >
+        Category: {{ book.category }}
+      </li>
+      <li
+        class="list-group-item"
+        routerLink="/books"
+        [queryParams]="{ language: book.language }"
+      >
+        Language: {{ book.language }}
+      </li>
     </ul>
   </fieldset>
 </div>

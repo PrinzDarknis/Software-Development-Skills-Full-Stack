@@ -39,6 +39,7 @@ export class BooksComponent implements OnInit {
             if (res.success) {
               let result = <Book[]>res.result;
               if (result.length > 0) this.books = result;
+              else this.books = undefined;
             } else {
               this.flashMessage.show(`Cann't get Books: ${res.msg}.`, {
                 cssClass: 'alert-danger',

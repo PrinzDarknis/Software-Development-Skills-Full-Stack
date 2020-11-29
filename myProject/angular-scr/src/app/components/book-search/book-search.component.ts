@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Book } from '../../models';
 import { BookService } from '../../services/book.service';
@@ -19,11 +19,31 @@ export class BookSearchComponent implements OnInit {
   constructor(
     private flashMessage: FlashMessagesService,
     private bookService: BookService,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.bookService.getTags().subscribe((tags) => (this.tags = tags));
+    this.bookService.getTags().subscribe((tags) => {
+      this.tags = tags;
+
+      // Load Values from URL
+      this.route.queryParams.subscribe((params) => {
+        let filter: Book = { ...params };
+        if (filter.tags && !Array.isArray(filter.tags))
+          filter.tags = [filter.tags];
+        filter = this.bookService.clearBook(filter);
+
+        this.book = filter;
+
+        // Tags
+        if (filter.tags) {
+          filter.tags.forEach((tag) => {
+            this.selected[tag] = true;
+          });
+        }
+      });
+    });
   }
 
   onSearchSubmit() {
