@@ -94,14 +94,14 @@ exports.delete = function (req, res) {
 
 // Middleware
 exports.MW_checkCreate = [
-  check("title").isString().escape().trim(),
-  check("author").isString().escape().trim(),
-  check("publischer").isString().escape().trim(),
+  check("title").isString().trim(),
+  check("author").isString().trim(),
+  check("publischer").isString().trim(),
   check("year").isNumeric().toInt(),
   check("ISBN10").isISBN(10).optional(),
   check("ISBN13").isISBN(13).optional(),
-  check("category").isString().escape().trim().optional(),
-  check("series").isString().escape().trim().optional(),
+  check("category").isString().trim().optional(),
+  check("series").isString().trim().optional(),
   check("language").isString().trim().optional(),
   check("tags").isArray().toArray().optional(),
   check("tags.*").isString().trim().optional(),
@@ -110,14 +110,14 @@ exports.MW_checkCreate = [
 ];
 
 const checkUpdate = [
-  check("title").isString().escape().trim().optional(),
-  check("author").isString().escape().trim().optional(),
-  check("publischer").isString().escape().trim().optional(),
+  check("title").isString().trim().optional(),
+  check("author").isString().trim().optional(),
+  check("publischer").isString().trim().optional(),
   check("year").isNumeric().toInt().optional(),
   check("ISBN10").isISBN(10).optional(),
   check("ISBN13").isISBN(13).optional(),
-  check("category").isString().escape().trim().optional(),
-  check("series").isString().escape().trim().optional(),
+  check("category").isString().trim().optional(),
+  check("series").isString().trim().optional(),
   check("language").isString().trim().optional(),
   //if Array => to Array
   check("tags").if(check("tags").isArray()).toArray(),
