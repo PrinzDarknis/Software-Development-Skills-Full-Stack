@@ -93,6 +93,17 @@
           />
         </div>
       </div>
+      <div *ngIf="tags">
+        <div class="form-check form-check-inline" *ngFor="let tag of tags">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [(ngModel)]="selected[tag]"
+            name="selected"
+          />
+          <label class="form-check-label">{{ tag }}</label>
+        </div>
+      </div>
     </div>
   </fieldset>
   <input type="submit" class="btn btn-primary" value="Search" />

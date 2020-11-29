@@ -7,16 +7,12 @@ const { checkID } = require("../middleware");
 const logger = require("../logger");
 const User = require("../models/user");
 const booksController = require("../controller/books");
+const { allowedTags } = require("../static-data");
 
 const router = express.Router();
 
 // Get All
 router.get("/", booksController.MW_checkSearchFilter, booksController.all);
-
-// Get One
-router.get("/:id", [checkID, booksController.MW_getBookByID], (req, res) =>
-  res.json(res.book)
-);
 
 //Create
 router.post(
@@ -25,6 +21,14 @@ router.post(
     booksController.MW_checkCreate
   ),
   booksController.create
+);
+
+// available Tags
+router.get("/tags", (req, res) => res.json(allowedTags));
+
+// Get One
+router.get("/:id", [checkID, booksController.MW_getBookByID], (req, res) =>
+  res.json(res.book)
 );
 
 // Update

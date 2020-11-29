@@ -11,9 +11,11 @@ export interface APIResponse {
   msg: string;
   user: User;
   token: string;
+  result: Book | Book[];
 }
 
 export interface Book {
+  _id?: string;
   title?: string;
   author?: string;
   publischer?: string;
@@ -64,4 +66,25 @@ export function validateISBN(str) {
     }
     return check == str[str.length - 1].toUpperCase();
   }
+}
+
+export function queryFromBook(book: Book): string {
+  //Export Tags because Array
+  let tags = book.tags;
+  delete book.tags;
+
+  //Object to Querry String, Source: https://attacomsian.com/blog/javascript-convert-object-to-query-string-parameters
+  var query = Object.keys(book)
+    .map(function (key) {
+      return `${encodeURIComponent(key)}=${encodeURIComponent(book[key])}`;
+    })
+    .join('&');
+
+  if (tags) {
+    tags.forEach((tag) => {
+      query += `&tags[]=${encodeURIComponent(tag)}`;
+    });
+  }
+
+  return query;
 }

@@ -12,9 +12,9 @@ import { BookService } from '../../services/book.service';
 })
 export class BookSearchComponent implements OnInit {
   isCollapse: boolean = true;
-  book: Book = {
-    tags: ['harem', 'katze'],
-  };
+  book: Book = {};
+  tags: string[];
+  selected = {};
 
   constructor(
     private flashMessage: FlashMessagesService,
@@ -22,7 +22,9 @@ export class BookSearchComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.bookService.getTags().subscribe((tags) => (this.tags = tags));
+  }
 
   onSearchSubmit() {
     // Trim
@@ -36,39 +38,31 @@ export class BookSearchComponent implements OnInit {
     if (this.book.series) this.book.series = this.book.series.trim();
     if (this.book.language) this.book.language = this.book.language.trim();
 
-    // Validate
-    let error = this.bookService.validateBook(this.book);
-    if (error) {
-      this.flashMessage.show(`Invalide Input: ${error.join('. ')}.`, {
-        cssClass: 'alert-danger',
-        timeout: 5000,
-      });
-      return false;
-    } else {
-      this.router.navigate(['/products'], { queryParams: this.book });
-      // let book = this.book;
-      // Export Tags because Array
-      // let tags = book.tags;
-      // delete book.tags;
-
-      // Object to Querry String, Source: https://attacomsian.com/blog/javascript-convert-object-to-query-string-parameters
-      // var query = Object.keys(book)
-      //   .map(function (key) {
-      //     return `${encodeURIComponent(key)}=${encodeURIComponent(book[key])}`;
-      //   })
-      //   .join('&');
-
-      // if (tags) {
-      //   tags.forEach((tag) => {
-      //     query += `&tags[]=${encodeURIComponent(tag)}`;
-      //   });
-      // }
-
-      // this.router.navigateByUrl(`/books?${query}`);
+    // insert Tags
+    this.book.tags = [];
+    for (const [key, value] of Object.entries(this.selected)) {
+      if (value) this.book.tags.push(key);
     }
+
+    // Clear empty Values
+    this.book = this.bookService.clearBook(this.book);
+
+    // Validate
+    let execute = (error) => {
+      if (error) {
+        this.flashMessage.show(`Invalide Input: ${error.join('. ')}.`, {
+          cssClass: 'alert-danger',
+          timeout: 5000,
+        });
+      } else {
+        this.router.navigate(['/books'], { queryParams: this.book });
+      }
+    };
+    this.bookService.validateBook(this.book, execute);
   }
 
   clearForm() {
     this.book = {};
+    console.log(this.selected);
   }
 }
