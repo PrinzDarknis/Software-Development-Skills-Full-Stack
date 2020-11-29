@@ -108,11 +108,14 @@
       </div>
     </div>
   </fieldset>
-  <input type="submit" class="btn btn-primary" value="Search" />
-  <input
+  <h4
     type="button"
-    (click)="clearForm()"
-    class="btn btn-secondary"
-    value="Clear"
-  />
+    class="form-check form-check-inline"
+    (click)="onSearchSubmit()"
+  >
+    <span type="submit" class="badge btn-primary"> Search</span>
+  </h4>
+  <h4 type="button" class="form-check form-check-inline" (click)="clearForm()">
+    <span type="button" class="badge btn-secondary"> Clear</span>
+  </h4>
 </form>

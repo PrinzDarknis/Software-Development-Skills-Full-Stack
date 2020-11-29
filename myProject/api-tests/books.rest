@@ -32,7 +32,7 @@ GET http://localhost/api/books?tags[]=isekai
 GET http://localhost/api/books?tags[]=isekai&tags[]=mc%20transform
 
 ### Books One
-GET http://localhost/api/books/5fc25a6ab45f574fdcceb445
+GET http://localhost/api/books/5fc40d1c858d642684e4511c
 
 ### Create Book
 POST http://localhost/api/books

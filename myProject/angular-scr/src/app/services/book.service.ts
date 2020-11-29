@@ -23,11 +23,30 @@ export class BookService implements OnInit {
     return of(this.tags);
   }
 
+  getBook(id: string): Observable<APIResponse> {
+    return this.http
+      .get<APIResponse>(
+        `${this.userService.apiServer}/api/books/${id}`,
+        this.userService.httpOptions
+      )
+      .pipe(catchError(this.errorHandler));
+  }
+
   getBooks(filter: Book): Observable<APIResponse> {
     let params = queryFromBook(filter);
     return this.http
       .get<APIResponse>(
         `${this.userService.apiServer}/api/books?${params}`,
+        this.userService.httpOptions
+      )
+      .pipe(catchError(this.errorHandler));
+  }
+
+  saveBook(book: Book, id: string): Observable<APIResponse> {
+    return this.http
+      .patch<APIResponse>(
+        `${this.userService.apiServer}/api/books/${id}`,
+        book,
         this.userService.httpOptions
       )
       .pipe(catchError(this.errorHandler));
@@ -87,6 +106,8 @@ export class BookService implements OnInit {
 
   // Extract Body on Error
   private errorHandler(err) {
+    console.log(err);
+
     return of(err.error);
   }
 }

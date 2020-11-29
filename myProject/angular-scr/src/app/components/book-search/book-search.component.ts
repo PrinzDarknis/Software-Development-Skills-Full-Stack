@@ -24,25 +24,26 @@ export class BookSearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Load available Tags
     this.bookService.getTags().subscribe((tags) => {
       this.tags = tags;
+    });
 
-      // Load Values from URL
-      this.route.queryParams.subscribe((params) => {
-        let filter: Book = { ...params };
-        if (filter.tags && !Array.isArray(filter.tags))
-          filter.tags = [filter.tags];
-        filter = this.bookService.clearBook(filter);
+    // Load Values from URL
+    this.route.queryParams.subscribe((params) => {
+      let filter: Book = { ...params };
+      if (filter.tags && !Array.isArray(filter.tags))
+        filter.tags = [filter.tags];
+      filter = this.bookService.clearBook(filter);
 
-        this.book = filter;
+      this.book = filter;
 
-        // Tags
-        if (filter.tags) {
-          filter.tags.forEach((tag) => {
-            this.selected[tag] = true;
-          });
-        }
-      });
+      // Tags
+      if (filter.tags) {
+        filter.tags.forEach((tag) => {
+          this.selected[tag] = true;
+        });
+      }
     });
   }
 
@@ -83,6 +84,6 @@ export class BookSearchComponent implements OnInit {
 
   clearForm() {
     this.book = {};
-    console.log(this.selected);
+    this.selected = {};
   }
 }

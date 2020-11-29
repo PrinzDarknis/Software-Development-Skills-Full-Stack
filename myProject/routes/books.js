@@ -28,7 +28,7 @@ router.get("/tags", (req, res) => res.json(allowedTags));
 
 // Get One
 router.get("/:id", [checkID, booksController.MW_getBookByID], (req, res) =>
-  res.json(res.book)
+  res.json({ success: true, result: res.book })
 );
 
 // Update
