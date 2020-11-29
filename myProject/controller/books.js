@@ -119,7 +119,11 @@ const checkUpdate = [
   check("category").isString().escape().trim().optional(),
   check("series").isString().escape().trim().optional(),
   check("language").isString().trim().optional(),
-  check("tags").isArray().toArray().optional(),
+  //if Array => to Array
+  check("tags").if(check("tags").isArray()).toArray(),
+  // if single Value => trim
+  check("tags").if(check("tags").not().isArray()).trim().optional(),
+  // trim inner Values of array
   check("tags.*").isString().trim().optional(),
   checkValidate,
   checkTags,
