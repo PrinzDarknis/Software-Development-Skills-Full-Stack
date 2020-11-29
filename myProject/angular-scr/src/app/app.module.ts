@@ -15,6 +15,7 @@ import { BooksComponent } from './components/books/books.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { BookEditComponent } from './components/book-edit/book-edit.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { BookSearchComponent } from './components/book-search/book-search.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BookDetailsComponent,
     BookEditComponent,
     PageNotFoundComponent,
+    BookSearchComponent,
   ],
   imports: [
     BrowserModule,
