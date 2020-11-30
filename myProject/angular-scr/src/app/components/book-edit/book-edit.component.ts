@@ -143,7 +143,7 @@ export class BookEditComponent implements OnInit {
     this.location.back();
   }
 
-  private isCreate(): boolean {
+  isCreate(): boolean {
     return this.id == 'new';
   }
 
