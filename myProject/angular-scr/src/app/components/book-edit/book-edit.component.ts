@@ -17,6 +17,9 @@ export class BookEditComponent implements OnInit {
   tags: string[];
   selected = {};
 
+  isDelete = false;
+  deleteStr = '';
+
   constructor(
     private flashMessage: FlashMessagesService,
     private bookService: BookService,
@@ -118,6 +121,34 @@ export class BookEditComponent implements OnInit {
       }
     };
     this.bookService.validateBook(this.book, execute);
+  }
+
+  delete() {
+    if (this.deleteStr.trim() != this.book._id) {
+      this.deleteStr = '';
+      this.isDelete = false;
+
+      this.flashMessage.show(`Wrong DELETE Input.`, {
+        cssClass: 'alert-danger',
+        timeout: 3000,
+      });
+    } else {
+      this.bookService.deleteBook(this.book._id).subscribe((res) => {
+        if (res.success) {
+          this.flashMessage.show(`Book DELETED.`, {
+            cssClass: 'alert-success',
+            timeout: 5000,
+          });
+
+          this.router.navigate(['books']);
+        } else {
+          this.flashMessage.show(`Server Error: Couldn't Delete`, {
+            cssClass: 'alert-danger',
+            timeout: 5000,
+          });
+        }
+      });
+    }
   }
 
   cancle() {

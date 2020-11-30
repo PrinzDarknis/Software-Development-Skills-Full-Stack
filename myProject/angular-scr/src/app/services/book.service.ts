@@ -62,6 +62,15 @@ export class BookService implements OnInit {
       .pipe(catchError(this.errorHandler));
   }
 
+  deleteBook(id: string): Observable<APIResponse> {
+    return this.http
+      .delete<APIResponse>(
+        `${this.userService.apiServer}/api/books/${id}`,
+        this.userService.httpOptions
+      )
+      .pipe(catchError(this.errorHandler));
+  }
+
   // callback because, needs to wait for Tags
   validateBook(book: Book, callback): void {
     let validate = (tags) => {

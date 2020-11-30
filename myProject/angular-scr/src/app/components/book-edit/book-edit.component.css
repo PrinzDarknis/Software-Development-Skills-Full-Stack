@@ -1,0 +1,7 @@
+.myDel {
+  background-color: red;
+}
+
+.myDel:hover {
+  background-color: #5e2028;
+}

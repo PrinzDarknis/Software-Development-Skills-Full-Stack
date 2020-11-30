@@ -109,3 +109,35 @@
 <h4 type="button" class="form-check form-check-inline" (click)="cancle()">
   <span class="badge btn-secondary"> Cancle</span>
 </h4>
+<h4
+  *ngIf="!isDelete"
+  type="button"
+  class="form-check form-check-inline"
+  (click)="isDelete = !isDelete"
+>
+  <span class="badge btn-secondary myDel"> Delete</span>
+</h4>
+<fieldset *ngIf="isDelete" class="col form-group">
+  <h5>
+    <label
+      >Insert <strong>{{ book._id }}</strong> to confirm delete.</label
+    >
+  </h5>
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="deleteStr"
+    name="deleteStr"
+  />
+  <br />
+  <h4 type="button" class="form-check form-check-inline" (click)="delete()">
+    <span class="badge btn-primary myDel"> Delete</span>
+  </h4>
+  <h4
+    type="button"
+    class="form-check form-check-inline"
+    (click)="isDelete = !isDelete"
+  >
+    <span class="badge btn-secondary"> Cancle</span>
+  </h4>
+</fieldset>
