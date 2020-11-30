@@ -110,7 +110,7 @@
   <span class="badge btn-secondary"> Cancle</span>
 </h4>
 <h4
-  *ngIf="!isDelete"
+  *ngIf="!isDelete && !isCreate()"
   type="button"
   class="form-check form-check-inline"
   (click)="isDelete = !isDelete"
