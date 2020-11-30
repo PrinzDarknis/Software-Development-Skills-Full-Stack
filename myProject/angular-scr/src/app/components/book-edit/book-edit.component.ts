@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 import { Book } from '../../models';
 import { BookService } from '../../services/book.service';
@@ -17,6 +18,8 @@ export class BookEditComponent implements OnInit {
   tags: string[];
   selected = {};
 
+  sub: Subscription;
+
   isDelete = false;
   deleteStr = '';
 
@@ -30,32 +33,17 @@ export class BookEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.loadData();
 
-    if (!this.id)
-      this.router.navigate(['PageNotFound'], { skipLocationChange: true });
-
-    // Load available Tags
-    this.bookService.getTags().subscribe((tags) => {
-      this.tags = tags;
+    //On Page change on same Component
+    this.sub = this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      this.loadData();
     });
+  }
 
-    if (!this.isCreate()) {
-      // Load Book
-      this.bookService.getBook(this.id).subscribe((res) => {
-        if (res.success) {
-          this.book = <Book>res.result;
-
-          // extract Tags
-          if (this.book.tags) {
-            this.book.tags.forEach((tag) => {
-              this.selected[tag] = true;
-            });
-          }
-        } else {
-          this.router.navigate(['PageNotFound'], { skipLocationChange: true });
-        }
-      });
-    }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   save() {
@@ -157,5 +145,36 @@ export class BookEditComponent implements OnInit {
 
   private isCreate(): boolean {
     return this.id == 'new';
+  }
+
+  private loadData() {
+    if (!this.id)
+      this.router.navigate(['PageNotFound'], { skipLocationChange: true });
+
+    // Load available Tags
+    this.bookService.getTags().subscribe((tags) => {
+      this.tags = tags;
+    });
+
+    if (!this.isCreate()) {
+      // Load Book
+      this.bookService.getBook(this.id).subscribe((res) => {
+        if (res.success) {
+          this.book = <Book>res.result;
+
+          // extract Tags
+          if (this.book.tags) {
+            this.book.tags.forEach((tag) => {
+              this.selected[tag] = true;
+            });
+          }
+        } else {
+          this.router.navigate(['PageNotFound'], { skipLocationChange: true });
+        }
+      });
+    } else {
+      this.book = {};
+      this.selected = {};
+    }
   }
 }

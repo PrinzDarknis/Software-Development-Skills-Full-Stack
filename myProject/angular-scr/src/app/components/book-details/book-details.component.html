@@ -93,3 +93,13 @@
     </h5>
   </fieldset>
 </fieldset>
+<br />
+<br />
+<h4
+  *ngIf="userService.loggedIn()"
+  type="button"
+  class="form-check form-check-inline"
+  routerLink="/books/{{ book._id }}/edit"
+>
+  <span class="badge btn-secondary"> Edit</span>
+</h4>

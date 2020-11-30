@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Book } from '../../models';
 import { BookService } from '../../services/book.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-book-details',
@@ -14,6 +15,7 @@ export class BookDetailsComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
+    public userService: UserService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
