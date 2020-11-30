@@ -52,6 +52,16 @@ export class BookService implements OnInit {
       .pipe(catchError(this.errorHandler));
   }
 
+  createBook(book: Book): Observable<APIResponse> {
+    return this.http
+      .post<APIResponse>(
+        `${this.userService.apiServer}/api/books/`,
+        book,
+        this.userService.httpOptions
+      )
+      .pipe(catchError(this.errorHandler));
+  }
+
   // callback because, needs to wait for Tags
   validateBook(book: Book, callback): void {
     let validate = (tags) => {

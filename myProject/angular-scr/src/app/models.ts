@@ -12,6 +12,12 @@ export interface APIResponse {
   user: User;
   token: string;
   result: Book | Book[];
+  error: [
+    {
+      msg: string;
+      param: string;
+    }
+  ];
 }
 
 export interface Book {

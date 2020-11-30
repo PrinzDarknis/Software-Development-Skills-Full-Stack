@@ -27,6 +27,7 @@ export class BookEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+
     if (!this.id)
       this.router.navigate(['PageNotFound'], { skipLocationChange: true });
 
@@ -35,21 +36,23 @@ export class BookEditComponent implements OnInit {
       this.tags = tags;
     });
 
-    // Load Book
-    this.bookService.getBook(this.id).subscribe((res) => {
-      if (res.success) {
-        this.book = <Book>res.result;
+    if (!this.isCreate()) {
+      // Load Book
+      this.bookService.getBook(this.id).subscribe((res) => {
+        if (res.success) {
+          this.book = <Book>res.result;
 
-        // extract Tags
-        if (this.book.tags) {
-          this.book.tags.forEach((tag) => {
-            this.selected[tag] = true;
-          });
+          // extract Tags
+          if (this.book.tags) {
+            this.book.tags.forEach((tag) => {
+              this.selected[tag] = true;
+            });
+          }
+        } else {
+          this.router.navigate(['PageNotFound'], { skipLocationChange: true });
         }
-      } else {
-        this.router.navigate(['PageNotFound'], { skipLocationChange: true });
-      }
-    });
+      });
+    }
   }
 
   save() {
@@ -78,18 +81,40 @@ export class BookEditComponent implements OnInit {
           timeout: 5000,
         });
       } else {
-        // Save
-        this.bookService.saveBook(this.book, this.id).subscribe((res) => {
-          if (res.success) {
-            // Navigate
-            this.router.navigate([`/books/${this.id}`]);
-          } else {
-            this.flashMessage.show(`Couldn't save Data: ${res.msg || res}.`, {
-              cssClass: 'alert-danger',
-              timeout: 5000,
-            });
-          }
-        });
+        if (this.isCreate()) {
+          // Create
+          this.bookService.createBook(this.book).subscribe((res) => {
+            if (res.success) {
+              // Navigate
+              this.router.navigate([`/books/${(<Book>res.result)._id}`]);
+            } else {
+              let msg = (res.msg || res) + ':';
+              if (res.error) {
+                res.error.forEach((err) => {
+                  msg += `${err.param}, `;
+                });
+              }
+
+              this.flashMessage.show(`Couldn't save Data: ${msg}`, {
+                cssClass: 'alert-danger',
+                timeout: 5000,
+              });
+            }
+          });
+        } else {
+          // Update
+          this.bookService.saveBook(this.book, this.id).subscribe((res) => {
+            if (res.success) {
+              // Navigate
+              this.router.navigate([`/books/${this.id}`]);
+            } else {
+              this.flashMessage.show(`Couldn't save Data: ${res.msg || res}.`, {
+                cssClass: 'alert-danger',
+                timeout: 5000,
+              });
+            }
+          });
+        }
       }
     };
     this.bookService.validateBook(this.book, execute);
@@ -97,5 +122,9 @@ export class BookEditComponent implements OnInit {
 
   cancle() {
     this.location.back();
+  }
+
+  private isCreate(): boolean {
+    return this.id == 'new';
   }
 }
