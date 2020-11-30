@@ -6,6 +6,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -16,6 +17,10 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { BookEditComponent } from './components/book-edit/book-edit.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BookSearchComponent } from './components/book-search/book-search.component';
+
+import { BookService } from './services/book.service';
+import { UserService } from './services/user.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,7 @@ import { BookSearchComponent } from './components/book-search/book-search.compon
     AppRoutingModule,
     FlashMessagesModule.forRoot(),
   ],
-  providers: [],
+  providers: [BookService, UserService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
