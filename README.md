@@ -1,7 +1,14 @@
 # Work-Folder from Dennis Naujokat for "Software Development Skills: Full-Stack"
 
+### How to Run
+1. Set Environment Variables
+  * DATABASE_URL = Link to Database
+  * PORT = Serverport
+  * TOKEN_SECRET = Secret to encrypt JWT
+2. Execute `npm run start` in project folder
+
 ### Open Page
-To run the project, just open the
+Online Version: 
 [Website](http://full-stack-myproject-software-development-skills.rahtiapp.fi/)
 
 ### Video
