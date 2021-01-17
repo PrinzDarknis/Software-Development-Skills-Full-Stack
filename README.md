@@ -1,10 +1,10 @@
 # Work-Folder from Dennis Naujokat for "Software Development Skills: Full-Stack"
 
 ### Open Page
-Platzhalter
+[WebSite](http://full-stack-myproject-software-development-skills.rahtiapp.fi/)
 
 ### Video
-Platzhalter
+[YouTube](https://youtu.be/Pal0kwvFccg)
 
 
 ### Learning Diary
