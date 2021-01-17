@@ -1,7 +1,8 @@
 # Work-Folder from Dennis Naujokat for "Software Development Skills: Full-Stack"
 
 ### Open Page
-[WebSite](http://full-stack-myproject-software-development-skills.rahtiapp.fi/)
+To run the project, just open the
+[Website](http://full-stack-myproject-software-development-skills.rahtiapp.fi/)
 
 ### Video
 [YouTube](https://youtu.be/Pal0kwvFccg)
